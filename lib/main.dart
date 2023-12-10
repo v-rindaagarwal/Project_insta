@@ -1,27 +1,26 @@
-import "package:flutter/material.dart";
-import 'package:start_up/screens/auth_screen.dart';
-import 'package:start_up/screens/home_page.dart';
-import 'package:start_up/screens/register_screen.dart';
-import 'package:start_up/screens/login_screen.dart';
-import 'package:start_up/screens/signinwithotp.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
-void main() => runApp(const MyApp());
+import 'package:start_up/screens_tube/nav_screen.dart';
+
+void main() {
+  runApp(MyApp());
+}
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  const MyApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      title: 'Flutter YouTube UI',
       debugShowCheckedModeBanner: false,
-      themeMode: ThemeMode.dark,
-      darkTheme: ThemeData.dark(),
-      routes: {
-        '/register': (context) => RegisterScreen(),
-        '/login': (context) => LoginScreen(),
-        '/signup_phone': (context) => const SignInWithPhone(),
-      },
-      home: HomePage(),
+      theme: ThemeData(
+        brightness: Brightness.dark,
+        bottomNavigationBarTheme:
+            const BottomNavigationBarThemeData(selectedItemColor: Colors.white),
+      ),
+      home: NavScreen(),
     );
   }
 }
